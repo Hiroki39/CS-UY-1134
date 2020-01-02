@@ -11,5 +11,4 @@ def is_number_of_lowercase_even(s, low, high):
         if s[low].islower():
             return False
         return True
-    return not is_number_of_lowercase_even(s, low, low) ^ \
-        is_number_of_lowercase_even(s, low + 1, high)
+    return not is_number_of_lowercase_even(s, low, low) ^ is_number_of_lowercase_even(s, low + 1, high)

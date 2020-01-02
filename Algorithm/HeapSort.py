@@ -1,10 +1,10 @@
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from BinaryTreeHeap import BinaryTreeHeap
+from ArrayHeap import ArrayHeap
 
 
 def heap_sort(lst):
-    helper_heap = BinaryTreeHeap()
+    helper_heap = ArrayHeap()
     for elem in lst:
         helper_heap.add(elem)
     for i in range(len(helper_heap)):
