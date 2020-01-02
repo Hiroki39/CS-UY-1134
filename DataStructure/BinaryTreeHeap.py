@@ -30,7 +30,7 @@ class BinaryTreeHeap:
     def add(self, key, value=None):
         new_item = BinaryTreeHeap.Item(key, value)
         new_node = BinaryTreeHeap.Node(new_item)
-        parent = self.find_parent(len(self))
+        parent = self.find_parent(len(self))  # insert node in correct position
         if parent is None:
             self.root = new_node
         elif parent.left is None:
@@ -51,7 +51,7 @@ class BinaryTreeHeap:
             return node.left
         return node.right
 
-    def upward_min_heapify(self, node):
+    def upward_min_heapify(self, node):  # restore attributes of heap
         while node is not self.root and node.item.key < node.parent.item.key:
             node.item, node.parent.item = node.parent.item, node.item
             node = node.parent
@@ -82,7 +82,7 @@ class BinaryTreeHeap:
         self.size -= 1
         return item.key, item.value
 
-    def downward_min_heapify(self, node):
+    def downward_min_heapify(self, node):  # restore attributes of heap
         while node is not None and node.left is not None:
             if node.item.key > node.left.item.key:
                 if node.right is None or node.right.item.key > node.left.item.key:
