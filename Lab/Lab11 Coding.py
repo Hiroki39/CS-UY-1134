@@ -1,6 +1,6 @@
+from SinglyLinkedList import SinglyLinkedList
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from SinglyLinkedList import SinglyLinkedList
 
 
 def reverse_dll_by_data(dll):

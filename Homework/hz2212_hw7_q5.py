@@ -1,6 +1,6 @@
+from LinkedBinaryTree import LinkedBinaryTree
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from LinkedBinaryTree import LinkedBinaryTree
 
 
 def create_expression_tree(prefix_exp_str):

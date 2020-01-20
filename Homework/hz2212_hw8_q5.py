@@ -63,7 +63,8 @@ class BinarySearchTreeMap:
         else:
             node.item.value = value
 
-    def insert(self, key, value=None):  # assume key not in tree, update left_num or right_num of some nodes during the insert process
+    # assume key not in tree, update left_num or right_num of some nodes during the insert process
+    def insert(self, key, value=None):
         new_item = BinarySearchTreeMap.Item(key, value)
         new_node = BinarySearchTreeMap.Node(new_item)
         parent = None
@@ -93,7 +94,8 @@ class BinarySearchTreeMap:
         else:
             self.delete(node)
 
-    def delete(self, node_to_delete):  # update left_num or right_num of some nodes during the delete process
+    # update left_num or right_num of some nodes during the delete process
+    def delete(self, node_to_delete):
         item = node_to_delete.item
         num_children = node_to_delete.num_children()
         if node_to_delete is self.root:

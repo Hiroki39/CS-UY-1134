@@ -26,7 +26,8 @@ class ArrayQueue:
             self.data_arr[0] = item
             self.front_ind = 0
         else:
-            back_ind = (self.front_ind + self.num_of_elems) % len(self.data_arr)
+            back_ind = (self.front_ind +
+                        self.num_of_elems) % len(self.data_arr)
             self.data_arr[back_ind] = item
         self.num_of_elems += 1
 
@@ -52,6 +53,7 @@ class ArrayQueue:
         old_data = self.data_arr
         new_data = make_array(new_cap)
         for new_ind in range(self.num_of_elems):
-            new_data[new_ind] = old_data[(self.front_ind + new_ind) % len(old_data)]
+            new_data[new_ind] = old_data[(
+                self.front_ind + new_ind) % len(old_data)]
         self.data_arr = new_data
         self.front_ind = 0

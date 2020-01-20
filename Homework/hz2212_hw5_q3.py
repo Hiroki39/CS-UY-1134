@@ -1,7 +1,7 @@
+from ArrayDeque import ArrayDeque
+from ArrayStack import ArrayStack
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from ArrayStack import ArrayStack
-from ArrayDeque import ArrayDeque
 
 
 class MidStack:

@@ -1,7 +1,7 @@
+from ArrayStack import ArrayStack
+from DoublyLinkedList import DoublyLinkedList
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from DoublyLinkedList import DoublyLinkedList
-from ArrayStack import ArrayStack
 
 
 def flatten_dll(lnk_lst):

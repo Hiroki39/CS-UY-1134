@@ -1,6 +1,6 @@
+from DoublyLinkedList import DoublyLinkedList
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from DoublyLinkedList import DoublyLinkedList
 
 
 class CompactString:
@@ -23,7 +23,8 @@ class CompactString:
             new_compstr.data.add_last(cursor.data)
             cursor = cursor.next
         if cursor.data[0] == other.data.header.next.data[0]:
-            new_compstr.data.add_last((cursor.data[0], cursor.data[1] + other.data.header.next.data[1]))
+            new_compstr.data.add_last(
+                (cursor.data[0], cursor.data[1] + other.data.header.next.data[1]))
             cursor = other.data.header.next.next
         else:
             new_compstr.data.add_last(cursor.data)

@@ -25,9 +25,11 @@ class ChainingHashTableMap:
 
     def __init__(self, N=64):
         self.N = N
-        self.table = make_array(N)  # Cannot use ArrayList since items are set randomly
+        # Cannot use ArrayList since items are set randomly
+        self.table = make_array(N)
         for i in range(self.N):   # Attribute for Homework9:
-            self.table[i] = None  # Use Item for single key, use UnsortedArrayMap for more than 1 keys
+            # Use Item for single key, use UnsortedArrayMap for more than 1 keys
+            self.table[i] = None
         self.n = 0
         self.hash_function = ChainingHashTableMap.MADHashFunction(self.N)
 
@@ -80,7 +82,8 @@ class ChainingHashTableMap:
         else:
             del self.table[i][key]
             if len(self.table) == 1:
-                self.table[i] = ChainingHashTableMap.Item(self.table[i].table[0].key, self.table[i].table[0].value)
+                self.table[i] = ChainingHashTableMap.Item(
+                    self.table[i].table[0].key, self.table[i].table[0].value)
         self.n -= 1
         if self.n < self.N // 4:
             self.rehash(self.N // 2)

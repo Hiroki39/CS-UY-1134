@@ -1,9 +1,9 @@
+from DoublyLinkedList import DoublyLinkedList
+from UnsortedArrayMap import UnsortedArrayMap
 import random
 import ctypes
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from UnsortedArrayMap import UnsortedArrayMap
-from DoublyLinkedList import DoublyLinkedList
 
 
 def make_array(n):
@@ -28,9 +28,11 @@ class LinkedHashTableMap:  # modified version of ChainingHashTableMap for FIFO o
 
     def __init__(self, N=64):
         self.N = N
-        self.table = make_array(N)  # Cannot use ArrayList since items are set randomly
+        # Cannot use ArrayList since items are set randomly
+        self.table = make_array(N)
         for i in range(self.N):
-            self.table[i] = None  # Use Item for single key, use UnsortedArrayMap for more than 1 keys
+            # Use Item for single key, use UnsortedArrayMap for more than 1 keys
+            self.table[i] = None
         self.n = 0
         self.hash_function = LinkedHashTableMap.MADHashFunction(self.N)
         self.keylist = DoublyLinkedList()
@@ -54,7 +56,8 @@ class LinkedHashTableMap:  # modified version of ChainingHashTableMap for FIFO o
     def __setitem__(self, key, value):
         i = self.hash_function(key)
         if self.table[i] is None:
-            key_val_node = self.keylist.add_last(LinkedHashTableMap.Item(key, value))
+            key_val_node = self.keylist.add_last(
+                LinkedHashTableMap.Item(key, value))
             self.table[i] = LinkedHashTableMap.Item(key, key_val_node)
             self.n += 1
         elif isinstance(self.table[i], LinkedHashTableMap.Item):
@@ -62,7 +65,8 @@ class LinkedHashTableMap:  # modified version of ChainingHashTableMap for FIFO o
                 old_item = self.table[i]
                 self.table[i] = UnsortedArrayMap()
                 self.table[i][old_item.key] = old_item.value
-                self.table[i][key] = self.keylist.add_last(LinkedHashTableMap.Item(key, value))
+                self.table[i][key] = self.keylist.add_last(
+                    LinkedHashTableMap.Item(key, value))
                 self.n += 1
             else:
                 self.table[i].value.data.value = value
@@ -70,7 +74,8 @@ class LinkedHashTableMap:  # modified version of ChainingHashTableMap for FIFO o
             try:
                 self.table[i][key].data.value = value
             except KeyError:
-                self.table[i][key] = self.keylist.add_last(LinkedHashTableMap.Item(key, value))
+                self.table[i][key] = self.keylist.add_last(
+                    LinkedHashTableMap.Item(key, value))
                 self.n += 1
         if self.n > self.N:
             self.rehash(2 * self.N)
@@ -88,7 +93,8 @@ class LinkedHashTableMap:  # modified version of ChainingHashTableMap for FIFO o
             self.keylist.delete_node(self.table[i][key])
             del self.table[i][key]
             if len(self.table) == 1:
-                self.table[i] = LinkedHashTableMap.Item(self.table[i].table[0].key, self.table[i].table[0].value)
+                self.table[i] = LinkedHashTableMap.Item(
+                    self.table[i].table[0].key, self.table[i].table[0].value)
         self.n -= 1
         if self.n < self.N // 4:
             self.rehash(self.N // 2)

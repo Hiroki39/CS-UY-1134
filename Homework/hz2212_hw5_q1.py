@@ -1,7 +1,7 @@
+from ArrayStack import ArrayStack
 import sys
 import copy
 sys.path.append(sys.path[0] + '/../DataStructure')
-from ArrayStack import ArrayStack
 
 
 input_str = input("-->")

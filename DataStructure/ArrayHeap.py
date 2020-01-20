@@ -23,7 +23,8 @@ class ArrayHeap:
 
     def upward_min_heapify(self, index):  # restore attributes of heap
         while index != 0 and self.data_arr[index].key < self.data_arr[(index - 1) // 2].key:
-            self.data_arr[index], self.data_arr[(index - 1) // 2] = self.data_arr[(index - 1) // 2], self.data_arr[index]
+            self.data_arr[index], self.data_arr[(
+                index - 1) // 2] = self.data_arr[(index - 1) // 2], self.data_arr[index]
             index = (index - 1) // 2
 
     def min(self):
@@ -54,4 +55,5 @@ class ArrayHeap:
                     index = index * 2 + 2
                 else:
                     break
-            self.data_arr[index], self.data_arr[(index - 1) // 2] = self.data_arr[(index - 1) // 2], self.data_arr[index]
+            self.data_arr[index], self.data_arr[(
+                index - 1) // 2] = self.data_arr[(index - 1) // 2], self.data_arr[index]

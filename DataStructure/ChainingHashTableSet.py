@@ -20,7 +20,8 @@ class ChainingHashTableSet:
 
     def __init__(self, N=64):
         self.N = N
-        self.table = make_array(N)  # Cannot use ArrayList since items are set randomly
+        # Cannot use ArrayList since items are set randomly
+        self.table = make_array(N)
         for i in range(self.N):
             self.table[i] = DoublyLinkedList()
         self.n = 0

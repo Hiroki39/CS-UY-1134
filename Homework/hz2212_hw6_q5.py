@@ -1,6 +1,6 @@
+from DoublyLinkedList import DoublyLinkedList
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from DoublyLinkedList import DoublyLinkedList
 
 
 def merge_linked_lists(srt_lnk_lst1, srt_lnk_lst2):
@@ -17,10 +17,12 @@ def merge_linked_lists(srt_lnk_lst1, srt_lnk_lst2):
                 node1 = node1.next
         else:
             if node1.data > node2.data:
-                new_lst = merge_sublists(node1, node2.next, srt_lnk_lst1, srt_lnk_lst2)
+                new_lst = merge_sublists(
+                    node1, node2.next, srt_lnk_lst1, srt_lnk_lst2)
                 new_lst.add_first(node2.data)
             else:
-                new_lst = merge_sublists(node1.next, node2, srt_lnk_lst1, srt_lnk_lst2)
+                new_lst = merge_sublists(
+                    node1.next, node2, srt_lnk_lst1, srt_lnk_lst2)
                 new_lst.add_first(node1.data)
         return new_lst
 

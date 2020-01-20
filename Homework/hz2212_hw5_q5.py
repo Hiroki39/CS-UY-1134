@@ -1,8 +1,8 @@
+from ArrayQueue import ArrayQueue
+from ArrayStack import ArrayStack
 import sys
 import copy
 sys.path.append(sys.path[0] + '/../DataStructure')
-from ArrayStack import ArrayStack
-from ArrayQueue import ArrayQueue
 
 
 def permutations(lst):

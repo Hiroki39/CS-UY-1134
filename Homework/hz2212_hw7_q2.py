@@ -45,7 +45,6 @@ class LinkedBinaryTree:
 
         return subtree_sum(self.root)
 
-
     def height(self):
         def subtree_height(root):
             if (root.left is None and root.right is None):

@@ -1,6 +1,6 @@
+from BinarySearchTreeMap import BinarySearchTreeMap
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from BinarySearchTreeMap import BinarySearchTreeMap
 
 
 def create_chain_bst(n):

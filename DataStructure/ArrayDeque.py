@@ -57,7 +57,8 @@ class ArrayDeque:
             self.data_arr[0] = elem
             self.front_ind = 0
         else:
-            back_ind = (self.front_ind + self.num_of_elems) % len(self.data_arr)
+            back_ind = (self.front_ind +
+                        self.num_of_elems) % len(self.data_arr)
             self.data_arr[back_ind] = elem
         self.num_of_elems += 1
 
@@ -82,7 +83,8 @@ class ArrayDeque:
             self.resize(self.num_of_elems // 2)
         if self.is_empty():
             raise Exception("Queue is empty")
-        back_ind = (self.front_ind + self.num_of_elems - 1) % len(self.data_arr)
+        back_ind = (self.front_ind + self.num_of_elems -
+                    1) % len(self.data_arr)
         value = self.data_arr[back_ind]
         self.data_arr[back_ind] = None  # For Garbage Collector
         self.num_of_elems -= 1

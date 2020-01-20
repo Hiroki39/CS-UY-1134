@@ -1,7 +1,7 @@
+from LinkedHashTableMap import LinkedHashTableMap
 import string
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from LinkedHashTableMap import LinkedHashTableMap
 
 
 class InvertedFile:
@@ -28,4 +28,5 @@ class InvertedFile:
     def generate_report(self):
         f = open("out.txt", "w")
         f.write("report:\n")
-        f.writelines(str(key) + ':' + str(self.IndMap[key]) + "\n" for key in self.IndMap)
+        f.writelines(str(key) + ':' +
+                     str(self.IndMap[key]) + "\n" for key in self.IndMap)

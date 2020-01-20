@@ -1,7 +1,7 @@
+from DoublyLinkedList import DoublyLinkedList
+from ChainingHashTableMap import ChainingHashTableMap
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
-from ChainingHashTableMap import ChainingHashTableMap
-from DoublyLinkedList import DoublyLinkedList
 
 
 def most_frequent(lst):

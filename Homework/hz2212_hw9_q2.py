@@ -1,8 +1,8 @@
+from MergeSort import merge_sort
+from ChainingHashTableMap import ChainingHashTableMap
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
 sys.path.append(sys.path[0] + '/../Algorithm')
-from ChainingHashTableMap import ChainingHashTableMap
-from MergeSort import merge_sort
 
 
 def intersection_list1(lst1, lst2):

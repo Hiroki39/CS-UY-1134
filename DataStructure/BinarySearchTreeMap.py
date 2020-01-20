@@ -88,7 +88,8 @@ class BinarySearchTreeMap:
     def delete(self, node_to_delete):  # assume key is in the tree
         item = node_to_delete.item
         parent = node_to_delete.parent
-        if node_to_delete.left is not None and node_to_delete.right is not None:  # replace the content of the node with the content of the node with the largest key in the left tree
+        # replace the content of the node with the content of the node with the largest key in the left tree
+        if node_to_delete.left is not None and node_to_delete.right is not None:
             max_in_left = self.subtree_max(node_to_delete.left)
             node_to_delete.item = max_in_left.item
             self.delete(max_in_left)
