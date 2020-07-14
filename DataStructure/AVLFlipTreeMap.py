@@ -13,6 +13,13 @@ class AVLFlipTreeMap:
             self.height = 0
             self.parent = None
 
+        def disconnect(self):
+            self.item = None
+            self.left = None
+            self.right = None
+            self.height = None
+            self.parent = None
+
         def get_diff(self):
             if self.left is not None:
                 left = self.left.height
@@ -34,6 +41,14 @@ class AVLFlipTreeMap:
             else:
                 self.height = max(self.left.height, self.right.height) + 1
 
+        def check_flip(self):
+            flipped = False
+            node = self
+            while node is not None:
+                flipped ^= node.item.flip
+                node = node.parent
+            return flipped
+
     def __init__(self):
         self.root = None
         self.size = 0
@@ -48,7 +63,7 @@ class AVLFlipTreeMap:
         node = self.find(key)
         if node is None:
             return -1
-        if self.check_flip(node):
+        if node.check_flip():
             return -node.item.value
         return node.item.value
 
@@ -66,7 +81,7 @@ class AVLFlipTreeMap:
     def __setitem__(self, key, value):
         node = self.find(key)
         if node is not None:
-            if self.check_flip(node):
+            if node.check_flip():
                 node.item.value = -value
             else:
                 node.item.value = value
@@ -75,7 +90,7 @@ class AVLFlipTreeMap:
 
     def insert(self, key, value=None, flip=False):  # assume key not in tree
         new_item = AVLFlipTreeMap.Item(key, value, flip)
-        new_node = AVLFlipreeMap.Node(new_item)
+        new_node = AVLFlipTreeMap.Node(new_item)
         parent = None
         curr_node = self.root
         if curr_node is None:
@@ -92,7 +107,7 @@ class AVLFlipTreeMap:
             else:
                 parent.right = new_node
             new_node.parent = parent
-            if self.check_flip(new_node):
+            if new_node.check_flip():
                 new_node.item.value *= -1
             self.fix_avl_property(new_node.parent)
         self.size += 1
@@ -153,12 +168,56 @@ class AVLFlipTreeMap:
             if node.right is not None:
                 node.right.item.flip ^= True
 
-    def check_flip(self, node):
-        flipped = False
-        while node is not None:
-            flipped ^= node.item.flip
-            node = node.parent
-        return flipped
+    def __delitem__(self, key):
+        node = self.find(key)
+        if node is None:
+            raise KeyError(str(key) + " not found")
+        else:
+            self.delete(node)
+
+    def delete(self, node_to_delete):  # assume key is in the tree
+        item = node_to_delete.item
+        parent = node_to_delete.parent
+        # replace the content of the node with the content of the node with the largest key in the left tree
+        if node_to_delete.left is not None and node_to_delete.right is not None:
+            max_in_left = self.subtree_max(node_to_delete.left)
+
+            if max_in_left.check_flip() == node_to_delete.check_flip():
+                node_to_delete.item.key = max_in_left.item.key
+                node_to_delete.item.value = max_in_left.item.value
+            else:
+                node_to_delete.item.key = max_in_left.item.key
+                node_to_delete.item.value = -max_in_left.item.value
+
+            self.delete(max_in_left)
+        else:
+            if node_to_delete.left is None and node_to_delete.right is None:
+                child = None
+            elif node_to_delete.left is not None and node_to_delete.right is None:
+                child = node_to_delete.left
+            else:
+                child = node_to_delete.right
+            if parent is None:
+                self.root = child
+            else:
+                if parent.left is node_to_delete:
+                    parent.left = child
+                else:
+                    parent.right = child
+            if child is not None:
+                if node_to_delete.item.flip:
+                    child.item.flip ^= True
+                child.parent = parent
+            node_to_delete.disconnect()
+            self.fix_avl_property(parent)
+            self.size -= 1
+        return item  # returns item in the node that is removed
+
+    def subtree_max(self, subtree_root):
+        curr = subtree_root
+        while curr.right is not None:
+            curr = curr.right
+        return curr
 
     def flip(self, low, high):
         if high < low:
