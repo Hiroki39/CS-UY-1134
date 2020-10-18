@@ -1,8 +1,8 @@
-from UnsortedArrayMap import UnsortedArrayMap
 import random
 import ctypes
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
+from UnsortedArrayMap import UnsortedArrayMap
 
 
 def make_array(n):

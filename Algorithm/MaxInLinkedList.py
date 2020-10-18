@@ -1,7 +1,3 @@
-import sys
-sys.path.append(sys.path[0] + '/../DataStructure')
-
-
 def max_in_linked_list(lnk_lst):
     def max_in_linked_list_helper(lnk_lst, sublist_head):
         if sublist_head.next is lnk_lst.trailer:

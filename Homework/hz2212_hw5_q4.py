@@ -1,6 +1,6 @@
-from ArrayStack import ArrayStack
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
+from ArrayStack import ArrayStack
 
 
 class StackQueue:

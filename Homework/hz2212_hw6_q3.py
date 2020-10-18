@@ -1,6 +1,6 @@
-from DoublyLinkedList import DoublyLinkedList
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
+from DoublyLinkedList import DoublyLinkedList
 
 
 class CompactString:

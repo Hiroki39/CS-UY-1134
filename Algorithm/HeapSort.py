@@ -1,6 +1,6 @@
-from ArrayHeap import ArrayHeap
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
+from ArrayHeap import ArrayHeap
 
 
 def heap_sort(lst):

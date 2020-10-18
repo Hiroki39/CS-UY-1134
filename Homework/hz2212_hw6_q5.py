@@ -1,6 +1,6 @@
-from DoublyLinkedList import DoublyLinkedList
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
+from DoublyLinkedList import DoublyLinkedList
 
 
 def merge_linked_lists(srt_lnk_lst1, srt_lnk_lst2):

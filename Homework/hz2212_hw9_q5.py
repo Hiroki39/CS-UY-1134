@@ -1,7 +1,7 @@
-from LinkedHashTableMap import LinkedHashTableMap
 import string
 import sys
 sys.path.append(sys.path[0] + '/../DataStructure')
+from LinkedHashTableMap import LinkedHashTableMap
 
 
 class InvertedFile:
